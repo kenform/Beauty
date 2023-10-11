@@ -4,8 +4,8 @@
 
 	background: $headerBgColor;
 	&__container {
-		@include adaptiveValue('padding-top', 20, 50);
-		@include adaptiveValue('padding-bottom', 20, 50);
+		padding-top: 20px;
+		padding-bottom: 20px;
 	}
 
 	// .footer__body
@@ -36,7 +36,7 @@
 		font-style: normal;
 		font-weight: normal;
 		&:not(:last-child) {
-			margin-bottom: toRem(10);
+			margin-bottom: 10px;
 		}
 		&:first-child {
 			font-weight: 700;
