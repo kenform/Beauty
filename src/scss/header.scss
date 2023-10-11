@@ -1,0 +1,46 @@
+//====================================================================================================
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+	transition: all 0.3s ease 0s;
+	background: $headerBgColor;
+
+	&__container {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+
+	&__menu {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+
+}
+.menu {
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: 50px;
+		column-gap: 44px;
+	}
+
+
+	&__item {
+		cursor: pointer;
+		font-weight: 700;
+		color: #fff;
+		font-size: 18px;
+		@extend %a;
+		@extend %link2;
+	}
+
+
+}
+

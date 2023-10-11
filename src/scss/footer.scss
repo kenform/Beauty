@@ -1,0 +1,49 @@
+//====================================================================================================
+.footer {
+	// .footer__container
+
+	background: $headerBgColor;
+	&__container {
+		@include adaptiveValue('padding-top', 20, 50);
+		@include adaptiveValue('padding-bottom', 20, 50);
+	}
+
+	// .footer__body
+
+	&__body {
+	}
+
+	// .footer__content
+
+	&__content {
+	}
+
+	// .footer__contact
+
+	&__contact {
+	}
+
+	// .footer__list
+
+	&__list {
+	}
+
+	// .footer__item
+
+	&__item {
+		text-align: right;
+		font-size: 32px;
+		font-style: normal;
+		font-weight: normal;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+		&:first-child {
+			font-weight: 700;
+		}
+	}
+}
+address {
+	font-style: normal;
+}
+//====================================================================================================

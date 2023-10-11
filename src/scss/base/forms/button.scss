@@ -1,0 +1,41 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+// default code file
+// .button {
+// 	display: inline-flex;
+// 	padding: 0px 0px;
+// 	@media (any-hover: hover) {
+// 		&:hover {
+// 		}
+// 	}
+
+// }
+
+.button {
+	display: inline-flex;
+	position: relative;
+	padding: 15px 20px;
+	font-size: 20px;
+	line-height: 24px;
+	transition: all 0.3s ease 0s;
+	text-transform: uppercase;
+	@extend %slide;
+	@media (max-width: 767.9px) {
+	}
+	@media (any-hover: hover) {
+		&:hover {
+		}
+	}
+	&__header {
+		background: #c66161;
+		font-weight: 700;
+		color: #fff;
+		border-radius: 10px;
+	}
+	&__request {
+		color: #fff;
+		border-radius: 10px;
+		background: #9b0000;
+	}
+}

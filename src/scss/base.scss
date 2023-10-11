@@ -1,0 +1,403 @@
+// Загальний файл елементів форм
+// Для підключення/відключення стилів конкретного елемента форми дивись base/forms/forms.scss
+
+// Стилі попапів
+@import 'base/forms/forms';
+// Стилі спойлерів
+// @import "base/spollers";
+
+// Стилі табів
+// @import "base/tabs";
+
+// Стилі мап
+// @import "base/maps";
+
+// Стилі блоку "показати ще"
+// @import "base/showmore";
+
+// Стилі для липкого блоку
+// @import "base/sticky";
+
+// Стилі для повноекранного блоку
+// @import "base/fullscreen";
+
+// Стилі для поекраної прокрутки
+// Styles for fullpage scroll
+// @import "base/fullpage";
+
+// Стилі для ripple ефекту
+// Styles for ripple effect
+// @import "base/ripple";
+
+// Стилі для кастомного курсору
+// Styles for custom cursor
+// @import "base/cursor";
+
+// Стилі для чуйних картинок (IBG)
+// Сніппет (HTML): ibg (div з картинкою та класами)
+// Сніппет (HTML): ibga (a з картинкою та класами)
+
+// Шаблони (заготівлі)
+// @extend %ім'я шаблону;
+// Сніппет (SCSS): ex
+
+// Spollers title
+
+%spollers-title {
+	display: block;
+	width: 100%;
+	text-align-last: left;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+// Gradient-text
+%gradient-text {
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+
+//========================================================================================================================================================
+
+// Hover buttons transparent
+// .buttons need property background: transparent
+%open {
+	&::before {
+		position: absolute;
+		content: '';
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background: #000;
+		transform: scaleX(0);
+		transition: 0.3s;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			background: transparent;
+			&::before {
+				transform: scaleX(1);
+			}
+		}
+	}
+}
+
+%fill-up {
+	@media (any-hover: hover) {
+		&:hover {
+			background: transparent;
+			box-shadow: inset 0 -100px 0 0 #000;
+		}
+	}
+}
+%slide {
+	@media (any-hover: hover) {
+		&:hover {
+			border-radius:10px;
+			background: transparent;
+			box-shadow: inset 300px 0 0 0 #000;
+		}
+	}
+}
+%through {
+	transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+	&::before {
+		position: absolute;
+		content: '';
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background: #000;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			color: white;
+			background: transparent;
+
+			&::before {
+				transform: scaleX(1);
+				transform-origin: left;
+			}
+		}
+	}
+}
+
+// Hover buttons
+
+%fill {
+	@media (any-hover: hover) {
+		&:hover {
+			background: #000;
+		}
+		&:active {
+			background: #09c00f;
+		}
+	}
+}
+
+//========================================================================================================================================================
+
+//========================================================================================================================================================
+// Hover link animations
+// put inside item menu
+//
+// add this code tag a or menu__item{
+// @extend %a;
+
+%a {
+	position: relative;
+	padding: toRem(30) 0;
+	margin: toRem(-30) 0;
+	transition: color 0.3s ease 0s;
+	cursor: pointer;
+}
+
+%link1 {
+	@media (any-hover: hover) {
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 17px;
+			left: 0;
+			width: 100%;
+			height: 0.1em;
+			background-color: #fff;
+			opacity: 0;
+			transition:
+				opacity 300ms,
+				transform 300ms;
+		}
+		&:hover,
+		&:focus {
+			color: #fff;
+			&:after {
+				opacity: 5;
+				transform: translate3d(0, 0.2em, 0);
+			}
+		}
+	}
+}
+
+%link2 {
+	@media (any-hover: hover) {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 3px;
+			border-radius: 4px;
+			background-color: #fff;
+			bottom: 10px;
+			left: 0;
+			transform-origin: right;
+			transform: scaleX(0);
+			transition: transform 0.3s ease-in-out;
+		}
+		&:hover {
+			&::before {
+				transform-origin: left;
+				transform: scaleX(1);
+			}
+		}
+	}
+}
+
+%link3 {
+	@media (any-hover: hover) {
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: toRem(10);
+			width: 100%;
+			height: toRem(3);
+			background-color: #d3b47f;
+			transform: scaleX(0);
+			transition: transform 0.3s ease-in-out;
+		}
+		&:hover {
+			color: #d3b47f;
+			&::before {
+				transform: scaleX(1);
+			}
+		}
+	}
+}
+
+// %link4 {
+// 	@media (any-hover: hover) {
+
+// 		&:before {
+// 			transform-origin: 50% 100%;
+// 			transition:
+// 				clip-path 0.3s,
+// 				transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+// 			clip-path: polygon(
+// 				0% 0%,
+// 				0% 100%,
+// 				0 100%,
+// 				0 0,
+// 				100% 0,
+// 				100% 100%,
+// 				0 100%,
+// 				0 100%,
+// 				100% 100%,
+// 				100% 0%
+// 			);
+// 		}
+// 		span {
+// 			display: inline-block;
+// 			transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+// 		}
+// 		&:hover {
+// 			&:before {
+// 				content: '';
+// 				transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+// 				clip-path: polygon(
+// 					0% 0%,
+// 					0% 100%,
+// 					50% 100%,
+// 					50% 0,
+// 					50% 0,
+// 					50% 100%,
+// 					50% 100%,
+// 					0 100%,
+// 					100% 100%,
+// 					100% 0%
+// 				);
+// 			}
+// 			span {
+// 				transform: translate3d(0, -2px, 0);
+// 			}
+// 		}
+// 	}
+// }
+
+//========================================================================================================================================================
+
+//========================================================================================================================================================
+
+// Анимация для появления блоков на странице при скроле страницы вниз
+%animation1 {
+	opacity: 0;
+	transform: translate(0px, 100px);
+	transition: all 0.4s ease 0s;
+	&._watcher-view {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+}
+
+%animation2 {
+	opacity: 0;
+	transform: translate(50%, 0);
+	transition: all 0.4s ease-in-out;
+	&._watcher-view {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+}
+
+%listCounter {
+	list-style-type: none;
+	counter-reset: item;
+	li {
+		position: relative;
+		&:before {
+			counter-increment: item;
+			content: counter(item);
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+// Адаптивне відео
+%responsiveVideo {
+	position: relative;
+	overflow: hidden;
+	height: 0;
+	padding-bottom: 56.25%;
+	video,
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+// Відео як фон
+%videoBackground {
+	video,
+	iframe,
+	object,
+	embed {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		background-size: cover;
+	}
+}
+// Сірий фільтр
+%grayfilter {
+	transition: all 0.3s ease 0s;
+	filter: grayscale(1);
+	@media (any-hover: hover) {
+		&:hover {
+			filter: grayscale(0);
+		}
+	}
+}
+// Скасувати виділення
+%noselect {
+	user-select: none;
+}
+// Дзеркальне відображення
+%mirror {
+	transform: scale(-1, 1);
+}
+// Плавний скролл
+%smoothscroll {
+	-webkit-overflow-scrolling: touch;
+}
+// Сховати скролл
+%hidescroll {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+[class*='-ibg'] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+[class*='-ibg--contain'] {
+	img {
+		object-fit: contain;
+	}
+}
